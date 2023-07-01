@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/study2023?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 'hh031010'
+  mail:
+    host: smtp.qq.com
+    username: 3238576095@qq.com
+    password: ytmvwrsmtsbvcijd
+    port: 587
+    properties:
+      from: 3238576095@qq.com
+      smtp:
+        socketFactory:
+          class: javax.net.ssl.SSLSocketFactory
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+
