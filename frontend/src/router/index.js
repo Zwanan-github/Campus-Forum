@@ -30,13 +30,26 @@ const router = createRouter({
     {
       path: '/index',
       name: 'index',
-      component: ()=>import('@/views/IndexView.vue')
+      component: ()=>import('@/views/IndexView.vue'),
+      children: [
+        {
+          path: '',
+          name: 'index-postList',
+          component: ()=>import('@/components/index/PostList.vue')
+        },
+        {
+          path: 'setting',
+          name: 'index-setting',
+          component: ()=>import('@/components/index/Settings.vue')
+        }
+      ]
     }
   ]
 })
 // 路由守卫
 router.beforeEach((to, from, next) => {
   const store = useStore();
+  // console.info(to)
   if (store.auth.user != null && to.name.startsWith('welcome-')) {
     next('/index');
   }else if (store.auth.user == null && to.fullPath.startsWith('/index')){

@@ -8,12 +8,13 @@
           />
         </div>
         <el-menu
-            default-active="1"
+            router
+            :default-active="router.currentRoute.value.path"
             class="el-menu-vertical-demo"
             @open="handleOpen"
             @close="handleClose"
         >
-          <el-menu-item index="1">
+          <el-menu-item index="/index">
             <el-icon>
               <icon-menu/>
             </el-icon>
@@ -37,7 +38,7 @@
             </el-icon>
             <span>我的收藏</span>
           </el-menu-item>
-          <el-menu-item index="5">
+          <el-menu-item index="/index/setting">
             <el-icon>
               <setting/>
             </el-icon>
@@ -92,7 +93,9 @@
             </div>
           </div>
         </el-header>
-        <el-main>Main</el-main>
+        <el-main style="padding: 0 0 0 0">
+          <router-view/>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -123,8 +126,9 @@ const store = useStore();
 const logout = () => {
   get("/api/auth/logout", (message) => {
     ElMessage.success(message);
-    router.push('/');
     store.auth.user = null;
+    localStorage.removeItem("user")
+    router.push('/');
   })
 }
 </script>
