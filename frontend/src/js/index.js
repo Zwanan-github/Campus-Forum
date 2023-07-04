@@ -6,11 +6,11 @@ import {useStore} from "@/stores/counter";
 const defaultError = ()=>ElMessage.error("发生错误， 请联系管理员");
 const defaultFailure = (message)=>ElMessage.warning(message);
 
-function post(url, data, success, failure = defaultFailure, error =defaultError) {
+function post(url, data, success, type="x-www-form-urlencoded", failure = defaultFailure, error =defaultError) {
     const store = useStore();
     axios.post(url, data, {
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
+            "Content-Type": "application/" + type
         },
         // 带上cookie
         withCredentials: true
