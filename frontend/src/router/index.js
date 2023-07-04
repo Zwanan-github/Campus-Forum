@@ -12,17 +12,17 @@ const router = createRouter({
         {
           path: '',
           name: 'welcome-login',
-          component: ()=>import('@/components/welcomes/LoginPage.vue')
+          component: ()=>import('@/views/welcomes/LoginPage.vue')
         },
         {
           path: 'register',
           name: 'welcome-register',
-          component: ()=>import('@/components/welcomes/RegisterPage.vue')
+          component: ()=>import('@/views/welcomes/RegisterPage.vue')
         },
         {
           path: 'forget',
           name: 'welcome-forget',
-          component: ()=>import('@/components/welcomes/ForgetPage.vue')
+          component: ()=>import('@/views/welcomes/ForgetPage.vue')
         }
 
       ]
@@ -35,12 +35,12 @@ const router = createRouter({
         {
           path: '',
           name: 'index-postList',
-          component: ()=>import('@/components/index/PostList.vue')
+          component: ()=>import('@/views/index/PostListPage.vue')
         },
         {
           path: 'setting',
           name: 'index-setting',
-          component: ()=>import('@/components/index/Settings.vue')
+          component: ()=>import('@/views/index/SettingsPage.vue')
         }
       ]
     }

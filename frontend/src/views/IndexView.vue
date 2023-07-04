@@ -11,8 +11,6 @@
             router
             :default-active="router.currentRoute.value.path"
             class="el-menu-vertical-demo"
-            @open="handleOpen"
-            @close="handleClose"
         >
           <el-menu-item index="/index">
             <el-icon>
@@ -94,7 +92,9 @@
           </div>
         </el-header>
         <el-main style="padding: 0 0 0 0">
-          <router-view/>
+          <el-scrollbar height="100%">
+            <router-view/>
+          </el-scrollbar>
         </el-main>
       </el-container>
     </el-container>
