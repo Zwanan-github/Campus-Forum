@@ -1,7 +1,7 @@
 package com.zwan.studyprojectbackend.interceptor;
 
 import com.zwan.studyprojectbackend.entity.user.AccountUser;
-import com.zwan.studyprojectbackend.mapper.UserAccountMapper;
+import com.zwan.studyprojectbackend.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class AuthorizeInterceptor implements HandlerInterceptor {
 
     @Autowired
-    UserAccountMapper mapper;
+    UserMapper mapper;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -25,7 +25,7 @@ public class AuthorizeInterceptor implements HandlerInterceptor {
         Authentication authentication = context.getAuthentication();
         User user = (User) authentication.getPrincipal();
         String username = user.getUsername();
-        AccountUser account = mapper.findAccountByNameOrEmail(username);
+        AccountUser account = mapper.findAccountUserByNameOrEmail(username);
         request.getSession().setAttribute("account", account);
         return true;
     }
